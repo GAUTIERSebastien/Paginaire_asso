@@ -1,11 +1,22 @@
+<main class="container mt-4">
 
+    <div class="row">
+        <?php foreach ($tabBooks as $book): ?>
 
-<main class="container">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="<?php echo $book->getImage(); ?>" class="card-img-top" alt="<?php echo $book->getTitle(); ?>">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $book->getTitle(); ?></h5>
+                    <p class="card-text">Author: <?php echo $book->getAuthor(); ?></p>
+                    <p class="card-text">Type: <?php echo $book->getType(); ?></p>
+                    <p class="card-text"><?php echo $book->getDescription(); ?></p>
+                </div>
+            </div>
+        </div>
 
-    <?php  foreach ($tabBooks as $book) {
-        echo $book;?> <br> <?php
-    
-    }  ?> 
-
+        <?php endforeach; ?>
+    </div>
 
 </main>
+

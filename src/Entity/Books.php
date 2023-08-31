@@ -72,7 +72,7 @@ class Books extends Model
 
     public function getDescription(): string
     {
-        return ucfirst($this->description);
+        return $this->description;
     }
 
     public function setDescription(string $description): Books
@@ -80,12 +80,12 @@ class Books extends Model
         $this->description = $description;
         return $this;
     }
-    public function __toString(): string
-    {
-        return $this->title;
-        return $this->author;
-        return $this->type;
-        return $this->image;
-        return $this->description;
-    }
+    // public function __toString(): string
+    // {
+    //     return $this->title;
+    //     return $this->author;
+    //     return $this->type;
+    //     return $this->image;
+    //     return $this->description;
+    // }
 }
