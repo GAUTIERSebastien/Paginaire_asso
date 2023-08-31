@@ -4,14 +4,13 @@ namespace Digi\Paginaire\Kernel;
 
 use PDO;
 use PDOException;
-
 use Digi\Paginaire\Entity\Model;
-use Digi\Paginaire\Interface\Log;
 use Digi\Paginaire\Configuration\Config;
 
 
 
-class DataBase extends PDO implements Log{
+class DataBase extends PDO
+{
 
     private static $instance = null;
 
@@ -26,7 +25,6 @@ class DataBase extends PDO implements Log{
             $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             $e = sprintf("[%s] : %s ligne %s", $e->getMessage(), $e->getFile(), $e->getLine()) . PHP_EOL;
-            $this->createlogger('Error : ' . $e);
             echo 'Oups !!! Une erreur est survenue';
             die();
         }
@@ -39,15 +37,4 @@ class DataBase extends PDO implements Log{
         }
         return self::$instance;
     }
-
-    
-
-    public function createlogger(string $message): void
-    {
-        if (!is_dir('src/Kernel/Logger/DataBase')) {
-            mkdir('src/Kernel/Logger/DataBase', 0777, true);
-        }
-        file_put_contents('src/Kernel/Logger/DataBase/' . date('Y-d-m') . '.log', $message . PHP_EOL, FILE_APPEND);
-    }
-    
 }
