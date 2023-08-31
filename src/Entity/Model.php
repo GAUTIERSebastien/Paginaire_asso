@@ -1,8 +1,9 @@
 <?php
 
-namespace Digi\Paginaire\Kernel;
+namespace Digi\Paginaire\Entity;
 
 use Digi\Paginaire\Kernel\DataBase;
+use Digi\Paginaire\Entity\Books;
 
 
 class Model
