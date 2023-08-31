@@ -1,20 +1,14 @@
-# Mini framework
-
-
-## Cloner le projet
-```
-git clone 
-```
+# Paginaire_asso
 
 ## Dépendance
-```
+
+```bash
 composer init
 ```
 
 ## Lancer le serveur
 
-Commande :
-```
+```bash
 php -S localhost:3000
 ```
 
