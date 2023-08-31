@@ -4,7 +4,8 @@ namespace Digi\Paginaire\Entity;
 
 use Digi\Paginaire\Kernel\Model;
 
-class User extends Model
+
+class Books extends Model
 {
     private int $id;
     private string $title;
