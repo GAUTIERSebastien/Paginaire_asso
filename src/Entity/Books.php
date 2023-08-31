@@ -42,4 +42,34 @@ class User extends Model
     {
         return $this->description;
     }
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
+    }
+
+    public function setAuthor(string $author)
+    {
+        $this->author = $author;
+    }
+
+    public function setType(string $type)
+    {
+        $this->type = $type;
+    }
+
+    public function setImage(string $image)
+    {
+        $this->image = $image;
+    }
+
+    public function setDescription(string $description)
+    {
+        $this->description = $description;
+    }
 }
