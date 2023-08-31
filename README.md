@@ -39,7 +39,7 @@ o http://localhost :3000/index.php?page=livres
 
 
 ```sql
-CREATE TABLE `books` (
+CREATE TABLE `Books` (
 
 `id` BIGINT NOT NULL,
 
