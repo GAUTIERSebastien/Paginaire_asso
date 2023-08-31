@@ -1,11 +1,12 @@
 <?php
 
-namespace Digi\Paginaire\Entity;
+namespace Digi\Paginaire\Kernel;
 
 use Digi\Paginaire\Kernel\DataBase;
 
 
-class Model  {
+class Model
+{
 
     public static $className;
 
@@ -46,18 +47,6 @@ class Model  {
     }
 
 
-
-    public static function findNotesByUser()
-    {
-        $sql = "SELECT notes.id, notes.note, users.id as users
-            FROM notes
-            LEFT JOIN users
-            on user_id= users.id
-            
-        ";
-        // var_dump($sql);
-        return self::Execute($sql);
-    }
 
 
     public static function insert(array $datas)
@@ -103,6 +92,4 @@ class Model  {
         $sql .= " where id=$id";
         return DataBase::getInstance()->exec($sql);
     }
-
-
 }
