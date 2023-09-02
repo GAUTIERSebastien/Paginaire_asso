@@ -1,6 +1,6 @@
 <main class="container mt-4">
 
-    <a href="link-to-create-new-book" class="btn btn-primary mb-4">Enregistrer un nouveau livre </a>
+    <a href="link-to-create-new-book" class="btn btn-primary mb-4">Enregistrer un nouveau livre</a>
 
     <div class="row">
         <?php foreach ($tabBooks as $book): ?>
@@ -15,16 +15,59 @@
                 </div>
                 <img src="../../asset/img/Front-Plain-Book.png" class="card-img-top w-50 mx-auto d-block" alt="<?php echo $book->getTitle(); ?>">
                 <div class="card-footer d-flex justify-content-between">
-                    <a href="#" class="btn btn-warning">Modifier</a>
+                    <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#editModal<?php echo $book->getId(); ?>">Modifier</a>
                     <a href="index.php?controller=Book&method=delete&id=<?php echo $book->getId(); ?>" class="btn btn-danger">Supprimer</a>
-
                 </div>
             </div>
+
+            <!-- Modal for Edit -->
+            <div class="modal fade" id="editModal<?php echo $book->getId(); ?>" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Modifier le livre</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="index.php?controller=Book&method=update">
+                                <input type="hidden" name="book_id" value="<?php echo $book->getId(); ?>">
+                                <div class="form-group">
+                                    <label for="title">Titre</label>
+                                    <input type="text" class="form-control" name="title" value="<?php echo $book->getTitle(); ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="author">Auteur</label>
+                                    <input type="text" class="form-control" name="author" value="<?php echo $book->getAuthor(); ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="type">Type</label>
+                                    <input type="text" class="form-control" name="type" value="<?php echo $book->getType(); ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="image">Image</label>
+                                    <input type="text" class="form-control" name="image" value="<?php echo $book->getImage(); ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea class="form-control" name="description"><?php echo $book->getDescription(); ?></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Modal -->
+
         </div>
 
         <?php endforeach; ?>
+
     </div>
 
 </main>
+
 
 

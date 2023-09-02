@@ -7,7 +7,8 @@ use Digi\Paginaire\Kernel\AbstractController;
 use Digi\Paginaire\Utils\MyFunction;
 
 
-class Home extends AbstractController{
+class Home extends AbstractController
+{
 
     public function index()
     {
@@ -20,8 +21,7 @@ class Home extends AbstractController{
 
         $view->render([
             'flash' => $this->getFlashMessage(),
-            'titlePage' => 'Page HomeController',
+            'titlePage' => 'Bienvenue chez Paginaire Asso',
         ]);
     }
-
 }

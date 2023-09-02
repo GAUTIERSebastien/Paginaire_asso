@@ -34,7 +34,6 @@ class Book extends AbstractController
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $result = Books::delete($id);
-            echo 'je suis dans delete' . $result;
         }
 
         if ($result) {
@@ -46,5 +45,48 @@ class Book extends AbstractController
         // Rediriger l'utilisateur vers la liste des livres après la suppression
         header('Location: index.php?controller=Book&action=index');
         exit;  // Arrêter l'exécution après une redirection
+    }
+
+    public function edit()
+    {
+        $view = new Views();
+        $view->setHead('head.html');
+        $view->setHeader('header.html');
+        $view->setHtml('editBook.html');
+        $view->setFooter('footer.html');
+
+        // Récupère les données du livre si un ID est fourni dans la chaîne de requête
+        $book = null;
+        if (isset($_GET['id'])) {
+            $book = Books::getById($_GET['id']);
+        }
+
+        // Si le formulaire est soumis (méthode POST), traite la mise à jour du livre.
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $updatedData = [
+                'title' => $_POST['title'],
+                'author' => $_POST['author'],
+                'type' => $_POST['type'],
+                'image' => $_POST['image'],
+                'description' => $_POST['description']
+            ];
+
+            // Méthode update pour mettre à jour le livre dans la base de données.
+            $updateResult = Books::update((int)$_GET['id'], $updatedData);
+
+            if ($updateResult) {
+                $this->setFlashMessage("L'enrregistrement est bien mis à jour", "success");
+                header('Location: index.php?controller=Book&action=index');
+                exit;
+            } else {
+                $this->setFlashMessage('Erreur lors de la mise à jour', 'error');
+            }
+        }
+
+        $view->render([
+            'flash' => $this->getFlashMessage(),
+            'titlePage' => 'Modifier un livre',
+            'book' => $book,
+        ]);
     }
 }
