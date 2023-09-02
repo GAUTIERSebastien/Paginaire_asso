@@ -1,11 +1,12 @@
 <main class="container mt-4">
 
+    <a href="link-to-create-new-book" class="btn btn-primary mb-4">Enregistrer un nouveau livre </a>
+
     <div class="row">
         <?php foreach ($tabBooks as $book): ?>
 
         <div class="col-md-4 mb-4">
             <div class="card">
-                
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $book->getTitle(); ?></h5>
                     <p class="card-text">Author: <?php echo $book->getAuthor(); ?></p>
@@ -13,11 +14,16 @@
                     <p class="card-text"><?php echo $book->getDescription(); ?></p>
                 </div>
                 <img src="../../asset/img/Front-Plain-Book.png" class="card-img-top w-50 mx-auto d-block" alt="<?php echo $book->getTitle(); ?>">
-
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="modify-link-for-the-book" class="btn btn-warning">Modifier</a>
+                    <a href="delete-link-for-the-book" class="btn btn-danger">Supprimer</a>
+                </div>
             </div>
         </div>
+
         <?php endforeach; ?>
     </div>
 
 </main>
+
 
