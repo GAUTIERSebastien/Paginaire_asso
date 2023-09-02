@@ -12,3 +12,9 @@ composer init
 php -S localhost:3000
 ```
 
+## Query string => Delete
+
+
+```html
+index.php?controller=Book&method=delete&id=
+```
