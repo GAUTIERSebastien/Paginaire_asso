@@ -15,8 +15,9 @@
                 </div>
                 <img src="../../asset/img/Front-Plain-Book.png" class="card-img-top w-50 mx-auto d-block" alt="<?php echo $book->getTitle(); ?>">
                 <div class="card-footer d-flex justify-content-between">
-                    <a href="modify-link-for-the-book" class="btn btn-warning">Modifier</a>
-                    <a href="delete-link-for-the-book" class="btn btn-danger">Supprimer</a>
+                    <a href="#" class="btn btn-warning">Modifier</a>
+                    <a href="index.php?controller=Book&method=delete&id=<?php echo $book->getId(); ?>" class="btn btn-danger">Supprimer</a>
+
                 </div>
             </div>
         </div>

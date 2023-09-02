@@ -25,4 +25,26 @@ class Book extends AbstractController
             'tabBooks' => $tabBooks,
         ]);
     }
+
+    public function delete()
+    {
+        $result = false;
+
+        // Vérifie l'ID et supprime le livre
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $result = Books::delete($id);
+            echo 'je suis dans delete' . $result;
+        }
+
+        if ($result) {
+            $this->setFlashMessage("L'enrregistrement est bien supprimé", "success");
+        } else {
+            $this->setFlashMessage('aucun enregistrement ne correspond', 'error');
+        }
+
+        // Rediriger l'utilisateur vers la liste des livres après la suppression
+        header('Location: index.php?controller=Book&action=index');
+        exit;  // Arrêter l'exécution après une redirection
+    }
 }
