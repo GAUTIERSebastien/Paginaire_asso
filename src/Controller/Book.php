@@ -9,6 +9,9 @@ use Digi\Paginaire\Kernel\Views;
 
 class Book extends AbstractController
 {
+
+    //* Méthode index pour afficher la liste des livres
+
     public function index()
     {
 
@@ -42,10 +45,13 @@ class Book extends AbstractController
             $this->setFlashMessage('aucun enregistrement ne correspond', 'error');
         }
 
-        // Rediriger l'utilisateur vers la liste des livres après la suppression
+        // Redirection vers la liste des livres après la suppression
         header('Location: index.php?controller=Book&method=index');
-        exit;  // Arrêter l'exécution après une redirection
+        exit;
     }
+
+
+    //*Methode edit pour modifier un livre
 
     public function edit()
     {
@@ -89,6 +95,8 @@ class Book extends AbstractController
             'book' => $book,
         ]);
     }
+
+    //*Methode create pour créer un livre
 
     public function create()
     {
