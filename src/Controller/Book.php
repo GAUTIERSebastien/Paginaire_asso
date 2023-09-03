@@ -43,7 +43,7 @@ class Book extends AbstractController
         }
 
         // Rediriger l'utilisateur vers la liste des livres après la suppression
-        header('Location: index.php?controller=Book&action=index');
+        header('Location: index.php?controller=Book&method=index');
         exit;  // Arrêter l'exécution après une redirection
     }
 
@@ -72,11 +72,11 @@ class Book extends AbstractController
             ];
 
             // Méthode update pour mettre à jour le livre dans la base de données.
-            $updateResult = Books::update((int)$_GET['id'], $updatedData);
+            $updateResult = Books::update((int)$_POST['id'], $updatedData);
 
             if ($updateResult) {
                 $this->setFlashMessage("L'enrregistrement est bien mis à jour", "success");
-                header('Location: index.php?controller=Book&action=index');
+                header('Location: index.php?controller=Book&method=index');
                 exit;
             } else {
                 $this->setFlashMessage('Erreur lors de la mise à jour', 'error');

@@ -31,8 +31,8 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="index.php?controller=Book&method=update">
-                                <input type="hidden" name="book_id" value="<?php echo $book->getId(); ?>">
+                            <form method="POST" action="index.php?controller=Book&method=edit">
+                                <input type="hidden" name="id" value="<?php echo $book->getId(); ?>">
                                 <div class="form-group">
                                     <label for="title">Titre</label>
                                     <input type="text" class="form-control" name="title" value="<?php echo $book->getTitle(); ?>">
