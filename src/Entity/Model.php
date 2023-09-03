@@ -5,10 +5,8 @@ namespace Digi\Paginaire\Entity;
 use Digi\Paginaire\Kernel\DataBase;
 use Digi\Paginaire\Entity\Books;
 
-
 class Model
 {
-
     public static $className;
 
     private static function getEntityName()
@@ -24,12 +22,13 @@ class Model
         return static::class;
     }
 
-    private static function Execute($sql)
+    private static function Execute($sql, $params = [])
     {
-        $pdostatement = DataBase::getInstance()->query($sql);
+        $db = DataBase::getInstance();
+        $pdostatement = $db->prepare($sql);
+        $pdostatement->execute($params);
         return $pdostatement->fetchAll(\PDO::FETCH_CLASS, self::getClassName());
     }
-
 
     public static function getAll()
     {
@@ -37,60 +36,45 @@ class Model
         return self::Execute($sql);
     }
 
-
-
     public static function getById(int $id)
     {
-        $sql = "select * from " . self::getEntityName() . " where id=$id";
-        $result =  self::Execute($sql);
-        //Comme fetchAll [0] on récupère le premier élément sinon c'est $result
+        $sql = "select * from " . self::getEntityName() . " where id=:id";
+        $result = self::Execute($sql, ['id' => $id]);
         return $result[0];
     }
 
-
-
-
     public static function insert(array $datas)
     {
-        $sql = "insert into " . self::getEntityName() . " values (";
-        $count = count($datas);
-        $i = 1;
-        foreach ($datas as $data) {
-            if ($i < $count) {
-                $sql .= "'$data',";
-            } else {
-                $sql .= "'$data'";
-            }
-            $i++;
-        }
-        $sql .= ")";
-        return DataBase::getInstance()->exec($sql);
+        $keys = array_keys($datas);
+        $fields = implode(",", $keys);
+        $placeholders = ':' . implode(', :', $keys);
+
+        $sql = "insert into " . self::getEntityName() . " ($fields) values ($placeholders)";
+
+        $db = DataBase::getInstance();
+        $pdostatement = $db->prepare($sql);
+        return $pdostatement->execute($datas);
     }
-
-
 
     public static function delete(int $id)
     {
-        $sql = "delete from " . self::getEntityName() . " where id=$id";
-        return DataBase::getInstance()->exec($sql);
+        $sql = "delete from " . self::getEntityName() . " where id=:id";
+        $db = DataBase::getInstance();
+        $pdostatement = $db->prepare($sql);
+        return $pdostatement->execute(['id' => $id]);
     }
-
-
 
     public static function update(int $id, array $datas)
     {
-        $sql = "update " . self::getEntityName() . " set ";
-        $count = count($datas);
-        $i = 1;
+        $setClauses = [];
         foreach ($datas as $key => $value) {
-            if ($i < $count) {
-                $sql .= "$key='$value',";
-            } else {
-                $sql .= "$key='$value'";
-            }
-            $i++;
+            $setClauses[] = "$key=:$key";
         }
-        $sql .= " where id=$id";
-        return DataBase::getInstance()->exec($sql);
+        $sql = "update " . self::getEntityName() . " set " . implode(", ", $setClauses) . " where id=:id";
+
+        $datas['id'] = $id;
+        $db = DataBase::getInstance();
+        $pdostatement = $db->prepare($sql);
+        return $pdostatement->execute($datas);
     }
 }
