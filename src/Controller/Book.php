@@ -52,7 +52,7 @@ class Book extends AbstractController
         $view = new Views();
         $view->setHead('head.html');
         $view->setHeader('header.html');
-        $view->setHtml('editBook.html');
+        $view->setHtml('book.html');
         $view->setFooter('footer.html');
 
         // Récupère les données du livre si un ID est fourni dans la chaîne de requête
