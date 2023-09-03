@@ -14,20 +14,24 @@ class Book extends AbstractController
 
     public function index()
     {
+        $page = isset($_GET['page']) && is_numeric($_GET['page']) ? intval($_GET['page']) : 1;
+        $limit = 10;
+        $offset = ($page - 1) * $limit;
 
         $view = new Views();
-        $tabBooks = Books::getAll();
+        $tabBooks = Books::getAll($limit, $offset);
         $view->setHead('head.html');
         $view->setHeader('header.html');
         $view->setHtml('book.html');
         $view->setFooter('footer.html');
-
         $view->render([
             'flash' => $this->getFlashMessage(),
             'titlePage' => 'Page BookController',
             'tabBooks' => $tabBooks,
+            'page' => $page
         ]);
     }
+
 
     public function delete()
     {
@@ -81,7 +85,7 @@ class Book extends AbstractController
             $updateResult = Books::update((int)$_POST['id'], $updatedData);
 
             if ($updateResult) {
-                $this->setFlashMessage("L'enrregistrement est bien mis à jour", "success");
+                $this->setFlashMessage("L'enregistrement est bien mis à jour", "success");
                 header('Location: index.php?controller=Book&method=index');
                 exit;
             } else {

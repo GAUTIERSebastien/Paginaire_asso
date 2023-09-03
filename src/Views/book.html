@@ -1,7 +1,25 @@
 <main class="container mt-4">
 
-    <!-- Bouton pour créer un enregistrer un nouveau livre -->
-    <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#createModal">Enregistrer un nouveau livre</button>
+    <div class="row mb-4">
+        <!-- Bouton pour créer un enregistrer un nouveau livre -->
+        <div class="col-md-6">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">Enregistrer un nouveau livre</button>
+        </div>
+
+        <!-- Bouton pour passer aux pages suivantes -->
+        <div class="col-md-6 text-right">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end mb-0">
+                    <li class="page-item <?php if($page <= 1){ echo 'disabled'; } ?>">
+                        <a class="page-link" href="index.php?controller=Book&method=index&page=<?php echo $page - 1; ?>">Précédent</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="index.php?controller=Book&method=index&page=<?php echo $page + 1; ?>">Suivant</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
     <!-- Modal pour créer un nouveau livre -->
     <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">

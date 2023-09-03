@@ -30,11 +30,19 @@ class Model
         return $pdostatement->fetchAll(\PDO::FETCH_CLASS, self::getClassName());
     }
 
-    public static function getAll()
+    public static function getAll($limit = null, $offset = null)
     {
         $sql = "select * from " . self::getEntityName();
+        if ($limit !== null && $offset !== null) {
+
+            error_log("Limit: $limit, Offset: $offset");
+            $sql .= " LIMIT $limit OFFSET $offset";
+        }
+        error_log("SQL Query: $sql");
+
         return self::Execute($sql);
     }
+
 
     public static function getById(int $id)
     {

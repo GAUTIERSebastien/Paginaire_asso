@@ -17,8 +17,6 @@ class Home extends AbstractController
         $view->setHeader('header.html');
         $view->setHtml('index.html');
         $view->setFooter('footer.html');
-
-
         $view->render([
             'flash' => $this->getFlashMessage(),
             'titlePage' => 'Bienvenue chez Paginaire Asso',
