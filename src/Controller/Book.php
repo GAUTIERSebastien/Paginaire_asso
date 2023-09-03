@@ -89,4 +89,32 @@ class Book extends AbstractController
             'book' => $book,
         ]);
     }
+
+    public function create()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $newBookData = [
+                'id' => $_POST['ISBN'],
+                'title' => $_POST['title'],
+                'author' => $_POST['author'],
+                'type' => $_POST['type'],
+                'image' => $_POST['image'],
+                'description' => $_POST['description']
+            ];
+
+            $existingBook = Books::getById((int)$_POST['ISBN']);
+            if ($existingBook) {
+                $this->setFlashMessage('Un livre avec cet ISBN existe déjà', 'error');
+            } else {
+                $insertResult = Books::insert($newBookData);
+                if ($insertResult) {
+                    $this->setFlashMessage("Le livre a été ajouté avec succès", "success");
+                    header('Location: index.php?controller=Book&method=index');
+                    exit;
+                } else {
+                    $this->setFlashMessage("Erreur lors de l'ajout du livre", "error");
+                }
+            }
+        }
+    }
 }

@@ -52,7 +52,7 @@ class Model
 
     public static function insert(array $datas)
     {
-        $sql = "insert into " . self::getEntityName() . " values (NULL,";
+        $sql = "insert into " . self::getEntityName() . " values (";
         $count = count($datas);
         $i = 1;
         foreach ($datas as $data) {
