@@ -21,4 +21,4 @@ index.php?controller=Book&method=delete&id=
 
 ## Rendu
 
-![Display rendering](/img/display_paginaire.png)
+![Rendu](/asset/img/display_paginaire.png)
