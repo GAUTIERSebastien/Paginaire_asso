@@ -18,3 +18,7 @@ php -S localhost:3000
 ```html
 index.php?controller=Book&method=delete&id=
 ```
+
+## Rendu
+
+![Display rendering](/img/display_paginaire.png)
