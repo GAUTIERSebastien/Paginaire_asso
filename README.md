@@ -11,7 +11,7 @@ composer init
 
 ```json
 {
-    "name": "digi/paginaire", // nom du projet avec un  /  et non  \ 
+    "name": "digi/paginaire", // Attention le nom du projet doit être exactement identique 
     "type": "project",
     "autoload": {
         "psr-4": {
