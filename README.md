@@ -1,25 +1,16 @@
 # Paginaire_asso
 
-# Yvan
-
-Tout fonctionne par contre j'ai mis digi/paginaire et non digi\paginaire au nom du project dans composer.json au moment de l'installation de composer. 
-
-## Github
-
-[GitHub page](https://github.com/GAUTIERSebastien/Paginaire_asso)
-
-
 ## Dépendance
 
 ```bash
-composer init
+composer install
 ```
 
 ## Composer.json
 
 ```json
 {
-    "name": "digi/paginaire", // Attention le nom du projet doit être exactement identique 
+    "name": "digi/paginaire",
     "type": "project",
     "autoload": {
         "psr-4": {
@@ -48,13 +39,6 @@ composer init
 
 ```bash
 php -S localhost:3000
-```
-
-## Query string => Delete
-
-
-```html
-index.php?controller=Book&method=delete&id=
 ```
 
 ## Rendu
