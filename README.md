@@ -1,5 +1,6 @@
 # Paginaire_asso
 
+
 ## Dépendance
 
 ```bash
@@ -10,7 +11,7 @@ composer init
 
 ```json
 {
-    "name": "digi/paginaire",
+    "name": "digi/paginaire", // nom du projet avec un " / " et non " \ "
     "type": "project",
     "autoload": {
         "psr-4": {
@@ -27,6 +28,13 @@ composer init
     "require": {}
 }
 ```
+
+## SQL
+
+[Création des tables](/asset/sql/Books.sql)
+
+[Insertion des données](/asset/sql/population.sql)
+
 
 ## Lancer le serveur
 
