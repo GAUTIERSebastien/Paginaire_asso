@@ -6,28 +6,6 @@
 composer install
 ```
 
-## Composer.json
-
-```json
-{
-    "name": "digi/paginaire",
-    "type": "project",
-    "autoload": {
-        "psr-4": {
-            "Digi\\Paginaire\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Sébastien GAUTIER",
-            "email": "sgautier034@gmail.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require": {}
-}
-```
-
 ## SQL
 
 [Création des tables](/asset/sql/Books.sql)
