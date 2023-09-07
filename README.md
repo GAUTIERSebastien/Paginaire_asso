@@ -6,18 +6,11 @@
 composer init
 ```
 
-## Lancer le serveur
-
-```bash
-php -S localhost:3000
-```
-
 ## Composer.json
 
 ```json
 {
     "name": "digi/paginaire",
-    "description": "",
     "type": "project",
     "autoload": {
         "psr-4": {
@@ -26,7 +19,8 @@ php -S localhost:3000
     },
     "authors": [
         {
-            "name": "seb"
+            "name": "Sébastien GAUTIER",
+            "email": "sgautier034@gmail.com"
         }
     ],
     "minimum-stability": "stable",
@@ -34,6 +28,11 @@ php -S localhost:3000
 }
 ```
 
+## Lancer le serveur
+
+```bash
+php -S localhost:3000
+```
 
 ## Query string => Delete
 
