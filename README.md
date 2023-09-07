@@ -2,7 +2,7 @@
 
 # Yvan
 
-Tout fonctionne par contre j'ai mis un digi/paginaire et non digi\paginaire au nom du project dans composer.json au moment de l'installation de composer. 
+Tout fonctionne par contre j'ai mis digi/paginaire et non digi\paginaire au nom du project dans composer.json au moment de l'installation de composer. 
 
 ## Github
 
