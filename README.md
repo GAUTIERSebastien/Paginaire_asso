@@ -12,6 +12,28 @@ composer init
 php -S localhost:3000
 ```
 
+## Composer.json
+
+```json
+{
+    "name": "digi/paginaire",
+    "description": "min framework",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Digi\\Paginaire\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hc"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}```
+
+
 ## Query string => Delete
 
 
