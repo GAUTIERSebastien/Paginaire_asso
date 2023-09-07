@@ -17,7 +17,7 @@ php -S localhost:3000
 ```json
 {
     "name": "digi/paginaire",
-    "description": "min framework",
+    "description": "",
     "type": "project",
     "autoload": {
         "psr-4": {
@@ -26,7 +26,7 @@ php -S localhost:3000
     },
     "authors": [
         {
-            "name": "hc"
+            "name": "seb"
         }
     ],
     "minimum-stability": "stable",
